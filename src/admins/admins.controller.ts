@@ -29,7 +29,7 @@ export class AdminsController {
     description: "Admin muvaffaqiyatli yaratildi",
     type: Admin,
   })
-  @Roles("SUPERADMIN")
+  @Roles("superadmin")
   @UseGuards(RolesGuard)
   @UseGuards(JwtAuthGuard)
   @Post()

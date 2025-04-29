@@ -44,7 +44,7 @@ export class UsersController {
     description: "Foydalanuvchilar muvaffaqiyatli olindi",
     type: [User],
   })
-  @Roles("SUPERADMIN", "ADMIN")
+  @Roles("superadmin", "ADMIN")
   @UseGuards(RolesGuard)
   @UseGuards(JwtAuthGuard)
   @Get()

@@ -3,7 +3,7 @@ import { CreateAdminDto } from './dto/create-admin.dto';
 import { UpdateAdminDto } from './dto/update-admin.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Admin } from './models/admin.model';
-import { Role } from 'src/roles/models/role.model';
+import { Role } from '../roles/models/role.model';
 
 @Injectable()
 export class AdminsService {

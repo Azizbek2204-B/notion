@@ -1,15 +1,13 @@
-import { ApiProperty } from "@nestjs/swagger"
-import { IsEmail, IsString, IsStrongPassword } from "class-validator"
+import { ApiProperty } from "@nestjs/swagger";
+import { IsEmail, IsString, MinLength } from "class-validator";
 
-export class SignInDto{
-    @ApiProperty({ example: "azizbek@gmail.com", description: "Admin email" })
-    @IsEmail()
-    readonly email:string
+export class SignInDto {
+  @ApiProperty({ example: "azizbek@gmail.com", description: "Admin email" })
+  @IsEmail()
+  email: string;
 
-    @ApiProperty({ example: "12345678", description: "Admin password" })
-    @IsStrongPassword()
-    readonly hashed_password:string
-
-    @ApiProperty({ example: "admin", description: "Admin roles" })
-    readonly roles:string[]
+  @ApiProperty({ example: "Pa$$w0rd123", description: "Admin password" })
+  @IsString()
+  @MinLength(8)
+  password: string;
 }

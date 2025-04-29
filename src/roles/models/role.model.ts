@@ -21,15 +21,15 @@ export class Role extends Model<Role, IRoleCreationAttr> {
   @Column({
     type: DataType.STRING,
   })
-  name: string;
+  declare name: string; // ✅ `declare` bilan ishlatish mumkin, lekin `public` field yo'q!
 
   @ApiProperty({ example: "Katta lavozim", description: "Rol tavsifi" })
   @Column({
     type: DataType.STRING,
   })
-  description: string;
+  declare description: string;
 
   @ApiProperty({ type: () => [Admin], description: "Ushbu rolga tegishli adminlar ro'yxati" })
   @HasMany(() => Admin)
-  admin: Admin;
+  declare admin: Admin[]; // ✅ ko‘plik bo‘lishi kerak (`Admin[]`)
 }

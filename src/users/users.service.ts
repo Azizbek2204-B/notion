@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/sequelize';
@@ -33,7 +33,11 @@ export class UsersService {
     return this.userModel.update(updateUserDto, {where:{id}})
   }
 
-  remove(id: number) {
+  async remove(id: number) {
+    const user = await this.userModel.findByPk(id)
+    if (!user) {
+      throw new NotFoundException('Foydalanuvchi topilmadi');
+    }
     return this.userModel.destroy({where:{id}})
   }
 }
